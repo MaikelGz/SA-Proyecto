@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitorización de Salud de la Tierra</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Gráfico Salud Tierra</h1>
+    </header>
+
+    <main>
+        <section id="chart-section">
+            <!-- Tres gráficos alineados horizontalmente -->
+            <div class="chart-container">
+                <canvas id="temperatureChart"></canvas>
+                <canvas id="phChart"></canvas>
+                <canvas id="humidityChart"></canvas>
+            </div>
+        </section>
+
+        <section id="notifications-section">
+            <h2>Notificaciones</h2>
+            <div id="notifications">
+                <p id="temp-notification">Temperatura normal.</p>
+            </div>
+        </section>
+
+        <section id="recommendations-section">
+            <h2>Recomendaciones</h2>
+            <div id="recommendations">
+                <p>Revisar la humedad si la temperatura sigue aumentando.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Tu script principal -->
+    <script type="module" src="script.js"></script>
+    
+</body>
+</html>

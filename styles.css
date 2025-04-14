@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+#chart-section {
+    grid-column: 1 / 3; /* Ocupa toda la fila si es necesario */
+    text-align: center;
+    display: flex;
+    justify-content: space-between; /* Espacio uniforme entre los gráficos */
+    gap: 20px; /* Espacio entre los gráficos */
+    flex-wrap: wrap; /* Permite que los gráficos se acomoden en varias líneas si es necesario */
+}
+
+#chart-section canvas {
+    width: 30%; /* Ajusta el ancho de cada gráfico */
+    height: 200px; /* Ajusta la altura de los gráficos */
+}
+
+#notifications-section, #recommendations-section {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+#notifications p, #recommendations p {
+    margin: 10px 0;
+}
