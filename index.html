@@ -12,22 +12,21 @@
     <header>
         <h1>Gráfico Salud Tierra</h1>
     </header>
+    
+    <button id="logout-btn" class="logout-btn">Cerrar sesión</button>
 
     <main>
         <section id="chart-section">
-            <!-- Tres gráficos alineados horizontalmente -->
             <div class="chart-container">
-                <canvas id="temperatureChart"></canvas>
-                <canvas id="phChart"></canvas>
-                <canvas id="humidityChart"></canvas>
+                <canvas id="temperatureChart" aria-label="Gráfico de Temperatura" role="img"></canvas>
+                <canvas id="phChart" aria-label="Gráfico de pH" role="img"></canvas>
+                <canvas id="humidityChart" aria-label="Gráfico de Humedad" role="img"></canvas>
             </div>
         </section>
 
         <section id="notifications-section">
             <h2>Notificaciones</h2>
-            <div id="notifications">
-                <p id="temp-notification">Temperatura normal.</p>
-            </div>
+            <div id="notifications"></div>
         </section>
 
         <section id="recommendations-section">
@@ -38,6 +37,7 @@
         </section>
     </main>
 
+    
     <!-- Tu script principal -->
     <script type="module" src="script.js"></script>
     

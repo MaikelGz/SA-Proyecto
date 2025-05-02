@@ -11,36 +11,80 @@ header {
 }
 
 main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
-#chart-section {
-    grid-column: 1 / 3; /* Ocupa toda la fila si es necesario */
-    text-align: center;
+/* Contenedor de gráficos flexible */
+.chart-container {
     display: flex;
-    justify-content: space-between; /* Espacio uniforme entre los gráficos */
-    gap: 20px; /* Espacio entre los gráficos */
-    flex-wrap: wrap; /* Permite que los gráficos se acomoden en varias líneas si es necesario */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
-#chart-section canvas {
-    width: 30%; /* Ajusta el ancho de cada gráfico */
-    height: 200px; /* Ajusta la altura de los gráficos */
+.chart-container canvas {
+    flex: 1 1 300px; /* Se adapta con mínimo de 300px */
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2; /* Relación de aspecto para mantener forma */
 }
 
-#notifications-section, #recommendations-section {
-    background-color: white;
+/* Secciones informativas */
+#notifications-section,
+#recommendations-section {
+    background-color: #fff;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
+/* Titulares accesibles */
 h2 {
     margin-top: 0;
+    font-size: 1.2rem;
 }
 
-#notifications p, #recommendations p {
+/* Texto legible */
+#notifications p,
+#recommendations p {
     margin: 10px 0;
+    font-size: 1rem;
 }
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .chart-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .chart-container canvas {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    border: none;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.logout-btn:hover {
+    background: linear-gradient(to right, #e60039, #c90027);
+}
+

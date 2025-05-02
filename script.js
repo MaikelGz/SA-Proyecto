@@ -1,23 +1,18 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+// script.js
+import { db, auth } from './firebase-config.js';
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import { getDocs, collection } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+import { signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
-// Configuración de Firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyALV4zpwSw4nhaCndmdSsPzym4u0vz9oN0",
-    authDomain: "sensorizacao-e-ambiente-51347.firebaseapp.com",
-    projectId: "sensorizacao-e-ambiente-51347",
-    storageBucket: "sensorizacao-e-ambiente-51347.appspot.com",
-    messagingSenderId: "78342438251",
-    appId: "1:78342438251:web:ed4b7b2814665765a2202e",
-    measurementId: "G-W27G3ZKVJW"
-};
 
-// Inicializar Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app);
-
+// 🔒 Verificar si el usuario está autenticado
+onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        window.location.href = "auth.html";
+    } else {
+        obtenerDatos(); // Solo carga datos si está logueado
+    }
+});
 // Obtener los contextos de los canvas
 const temperatureCtx = document.getElementById('temperatureChart').getContext('2d');
 const phCtx = document.getElementById('phChart').getContext('2d');
@@ -49,10 +44,10 @@ async function obtenerDatos() {
             humedadData.push(data.humedad);
 
             // Mostrar en notificaciones
-            const notificationDiv = document.getElementById("notifications");
-            const p = document.createElement("p");
-            p.textContent = `Sensor ${doc.id}: ${JSON.stringify(data)}`;
-            notificationDiv.appendChild(p);
+            //const notificationDiv = document.getElementById("notifications");
+            //const p = document.createElement("p");
+            //p.textContent = `Sensor ${doc.id}: ${JSON.stringify(data)}`;
+            //notificationDiv.appendChild(p);
         });
 
         console.log("Datos de temperatura:", temperaturaData);
@@ -158,12 +153,54 @@ async function obtenerDatos() {
             });
         }
 
+
         console.log("Finalizada la obtención de datos y actualización de gráficos.");
+
+        console.log("Agregamos ahroa a notificaciones las medias");
+
+        
+        const lastN = 20; // Mostrar promedios de los últimos 20 valores
+
+        const getAverage = arr => {
+            const lastValues = arr.slice(-lastN);
+            const sum = lastValues.reduce((a, b) => a + b, 0);
+            return (sum / lastValues.length).toFixed(2);
+        };
+
+        const avgTemp = getAverage(temperaturaData);
+        const avgPh = getAverage(phData);
+        const avgHumidity = getAverage(humedadData);
+
+        const notificationDiv = document.getElementById("notifications");
+
+        const tempMsg = document.createElement("p");
+        tempMsg.style.color = "red";
+        tempMsg.textContent = `La temperatura media es de ${avgTemp} °C.`;
+        notificationDiv.appendChild(tempMsg);
+
+        const phMsg = document.createElement("p");
+        phMsg.style.color = "green";
+        phMsg.textContent = `El pH medio es de ${avgPh}.`;
+        notificationDiv.appendChild(phMsg);
+
+        const humidityMsg = document.createElement("p");
+        humidityMsg.style.color = "blue";
+        humidityMsg.textContent = `La humedad media es de ${avgHumidity}%.`;
+        notificationDiv.appendChild(humidityMsg);
 
     } catch (error) {
         console.error("Error obteniendo documentos:", error);
     }
 }
+
+document.getElementById("logout-btn").addEventListener("click", async () => {
+    try {
+        await signOut(auth);
+        window.location.href = "auth.html";
+    } catch (error) {
+        alert("Error al cerrar sesión: " + error.message);
+    }
+});
 
 // Llamar la función
 obtenerDatos();
