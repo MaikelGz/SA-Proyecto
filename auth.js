@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
 let isLogin = false;
 
@@ -15,6 +16,12 @@ const title = document.getElementById("form-title");
 const button = form.querySelector("button");
 const toggleLink = document.getElementById("toggle-link");
 
+// Crear un elemento para mensajes de error
+const messageBox = document.createElement("div");
+messageBox.style.color = "red";
+messageBox.style.marginTop = "10px";
+form.appendChild(messageBox);
+
 const toggleMode = () => {
   isLogin = !isLogin;
   title.textContent = isLogin ? "Iniciar Sesión" : "Registro";
@@ -22,6 +29,9 @@ const toggleMode = () => {
   toggleLink.textContent = isLogin ? "¿No tienes cuenta? Regístrate" : "¿Ya estás registrado? Inicia sesión";
   usernameInput.style.display = isLogin ? "none" : "block";
   locationInput.style.display = isLogin ? "none" : "block";
+  usernameInput.required = !isLogin;
+  locationInput.required = !isLogin;
+  messageBox.textContent = "";
 };
 
 toggleLink.addEventListener("click", (e) => {
@@ -31,32 +41,79 @@ toggleLink.addEventListener("click", (e) => {
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const email = document.getElementById("email").value;
+  messageBox.textContent = "";
+
+  const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
 
+  if (!email || !password) {
+    messageBox.textContent = "Por favor, completa todos los campos.";
+    return;
+  }
+
+  if (password.length < 6) {
+    messageBox.textContent = "La contraseña debe tener al menos 6 caracteres.";
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    messageBox.textContent = "El formato del correo electrónico no es válido.";
+    return;
+  }
+  
   if (isLogin) {
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      alert("Inicio de sesión exitoso");
-      window.location.href = "index.html";
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+  
+      if (user) {
+        window.location.href = "index.html";
+      }
     } catch (error) {
-      alert("Error al iniciar sesión: " + error.message);
+      switch (error.code) {
+        case "auth/user-not-found":
+        case "auth/wrong-password":
+        case "auth/invalid-credential":
+          messageBox.textContent = "Correo o contraseña incorrectos.";
+          break;
+        case "auth/too-many-requests":
+          messageBox.textContent = "Demasiados intentos fallidos. Inténtalo más tarde.";
+          break;
+        default:
+          messageBox.textContent = "Error al iniciar sesión.";
+      }
     }
   } else {
-    const username = usernameInput.value;
-    const location = locationInput.value;
+    const username = usernameInput.value.trim();
+    const location = locationInput.value.trim();
+
+    if (!username || !location) {
+      messageBox.textContent = "Por favor, completa todos los campos.";
+      return;
+    }
+
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+
       await setDoc(doc(db, "usuarios", user.uid), {
         username,
         email,
         location
       });
-      alert("Registro exitoso");
+
       window.location.href = "index.html";
     } catch (error) {
-      alert("Error al registrarse: " + error.message);
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          messageBox.textContent = "El correo ya está registrado.";
+          break;
+        case "auth/invalid-email":
+          messageBox.textContent = "Correo inválido.";
+          break;
+        default:
+          messageBox.textContent = "Error al registrarse: " + error.message;
+      }
     }
   }
 });
