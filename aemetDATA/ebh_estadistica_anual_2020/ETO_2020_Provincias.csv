@@ -1,0 +1,53 @@
+Parámetro;región;enero;febrero;marzo;abril;mayo;junio;julio;agosto;septiembre;octubre;noviembre;diciembre;anual
+Evapotranspiración de referencia;A CORUÑA;19.5;29.6;50.5;56.5;105.7;88.6;123.6;89.6;78.9;39.1;25.5;19.2;726.3
+Evapotranspiración de referencia;ALBACETE;25.2;52.1;63.3;77.0;143.7;185.9;205.2;195.3;119.5;78.3;33.9;30.2;1209.6
+Evapotranspiración de referencia;ALICANTE/ALACANT;36.0;62.6;77.0;92.7;153.7;172.4;187.0;172.4;122.5;91.5;41.4;56.0;1265.2
+Evapotranspiración de referencia;ALMERIA;37.3;64.8;79.3;83.6;164.0;189.6;205.4;193.5;126.6;94.8;49.7;57.0;1345.6
+Evapotranspiración de referencia;ARABA/ALAVA;18.0;34.3;46.6;64.3;111.4;98.1;126.0;109.3;83.4;42.4;25.3;18.6;777.7
+Evapotranspiración de referencia;ASTURIAS;24.8;43.3;48.2;58.7;105.5;89.7;109.8;95.7;72.3;44.0;30.4;23.6;746.0
+Evapotranspiración de referencia;AVILA;22.3;46.1;56.3;62.8;131.9;154.8;208.0;170.4;111.9;60.7;29.5;22.8;1077.5
+Evapotranspiración de referencia;BADAJOZ;28.2;48.2;76.2;86.2;158.8;189.6;234.5;198.4;134.9;81.4;36.1;25.5;1298.0
+Evapotranspiración de referencia;ILLES BALEARS;30.9;49.8;71.7;86.9;142.1;149.4;181.5;156.8;111.9;76.2;43.8;44.3;1145.3
+Evapotranspiración de referencia;BARCELONA;22.2;40.8;58.2;78.4;126.4;120.8;159.5;138.5;91.1;55.2;26.2;25.1;942.4
+Evapotranspiración de referencia;BIZKAIA;26.9;39.7;47.4;68.9;104.8;91.2;109.5;98.0;78.7;46.3;37.8;28.2;777.4
+Evapotranspiración de referencia;BURGOS;15.8;35.4;51.8;59.6;117.3;114.3;157.5;132.7;93.4;47.6;27.6;20.0;873.0
+Evapotranspiración de referencia;CACERES;25.3;44.9;72.6;79.7;149.0;182.9;232.6;195.0;131.4;75.5;32.0;25.8;1246.7
+Evapotranspiración de referencia;CADIZ;36.2;66.5;82.2;93.6;170.2;176.2;215.9;187.4;143.8;93.5;54.2;32.3;1352.0
+Evapotranspiración de referencia;CANTABRIA;25.3;38.2;44.0;60.0;100.1;86.8;106.8;94.3;74.8;44.9;34.9;25.8;735.9
+Evapotranspiración de referencia;CASTELLON/CASTELLÓ;30.7;56.8;65.8;76.9;138.4;143.6;171.4;158.4;111.9;80.6;32.9;45.7;1113.1
+Evapotranspiración de referencia;CEUTA;54.1;57.2;78.1;79.1;117.6;141.5;129.2;160.0;100.2;79.4;51.2;49.9;1097.5
+Evapotranspiración de referencia;CIUDAD REAL;23.9;47.1;71.6;82.6;160.0;196.2;227.7;197.5;126.9;78.8;35.6;25.5;1273.4
+Evapotranspiración de referencia;CORDOBA;28.1;53.5;81.2;92.3;161.3;197.3;237.1;202.8;133.6;86.0;40.6;26.4;1340.2
+Evapotranspiración de referencia;CUENCA;22.9;47.7;57.1;73.5;141.9;172.1;201.1;180.7;115.0;68.2;32.2;23.4;1135.8
+Evapotranspiración de referencia;GIPUZKOA;25.4;39.1;47.3;71.5;107.3;93.0;114.8;100.5;80.1;46.3;37.3;24.7;787.3
+Evapotranspiración de referencia;GIRONA;25.1;41.6;55.6;72.8;125.6;116.3;151.6;136.8;87.9;50.5;28.6;25.5;917.9
+Evapotranspiración de referencia;GRANADA;30.1;57.7;68.8;75.7;145.9;177.9;213.7;193.4;121.7;80.2;44.9;30.2;1240.2
+Evapotranspiración de referencia;GUADALAJARA;21.5;43.0;55.3;65.9;137.5;156.5;196.8;171.1;104.7;57.8;28.6;23.2;1061.9
+Evapotranspiración de referencia;HUELVA;31.5;57.5;78.4;87.8;154.7;176.1;216.6;199.3;132.4;86.3;39.5;27.6;1287.7
+Evapotranspiración de referencia;HUESCA;18.1;42.6;57.7;74.7;130.6;130.5;175.1;159.1;104.4;56.9;26.3;21.4;997.4
+Evapotranspiración de referencia;JAEN;27.2;54.7;74.5;85.5;158.6;189.8;225.2;197.0;128.7;81.2;43.4;25.3;1291.1
+Evapotranspiración de referencia;LA RIOJA;22.0;44.2;53.8;62.3;121.6;113.0;153.7;133.8;98.9;53.4;26.7;25.7;909.1
+Evapotranspiración de referencia;LAS PALMAS;75.6;98.5;97.4;107.6;138.7;135.4;176.4;177.4;134.2;103.3;85.3;61.5;1391.3
+Evapotranspiración de referencia;LEON;15.9;34.4;56.8;59.5;120.7;117.6;166.7;124.6;91.4;43.7;22.8;17.3;871.4
+Evapotranspiración de referencia;LLEIDA;18.5;39.7;55.3;73.7;123.5;122.9;164.5;147.7;95.3;52.9;25.2;18.9;938.1
+Evapotranspiración de referencia;LUGO;19.1;32.0;47.7;57.3;108.8;96.1;126.8;100.3;76.6;37.6;24.8;17.0;744.1
+Evapotranspiración de referencia;MADRID;23.3;43.2;62.9;72.2;142.1;176.3;225.8;186.8;118.5;64.8;28.9;26.6;1171.4
+Evapotranspiración de referencia;MALAGA;34.9;62.1;76.8;81.1;147.1;178.3;205.7;196.3;130.7;89.0;46.5;35.0;1283.5
+Evapotranspiración de referencia;MELILLA;49.3;57.1;80.0;78.7;114.5;148.3;133.6;173.1;112.2;82.4;55.4;53.2;1137.8
+Evapotranspiración de referencia;MURCIA;33.9;61.5;78.2;86.4;155.4;183.9;197.4;188.2;122.0;90.1;42.0;52.5;1291.5
+Evapotranspiración de referencia;NAVARRA;18.3;37.8;51.0;69.9;125.8;115.6;155.9;138.9;101.6;49.0;28.5;20.6;912.9
+Evapotranspiración de referencia;OURENSE;17.5;31.9;52.2;57.6;117.4;108.6;160.0;114.9;89.0;39.0;24.2;14.5;826.8
+Evapotranspiración de referencia;PALENCIA;14.8;35.9;57.0;59.7;123.5;124.5;173.5;138.5;97.5;50.0;25.4;18.6;918.9
+Evapotranspiración de referencia;PONTEVEDRA;19.9;30.8;54.3;59.3;116.1;98.1;154.1;103.3;86.5;39.6;27.1;16.4;805.5
+Evapotranspiración de referencia;SALAMANCA;19.4;41.5;59.3;66.1;136.3;152.6;210.8;165.1;114.7;60.6;28.5;20.9;1075.8
+Evapotranspiración de referencia;SANTA CRUZ DE TENERIFE;63.8;92.5;87.7;97.0;130.9;124.2;173.6;164.7;119.1;86.2;72.7;45.6;1258.0
+Evapotranspiración de referencia;SEGOVIA;19.2;41.7;57.9;63.6;133.3;149.8;203.9;168.0;111.3;59.4;33.3;21.4;1062.8
+Evapotranspiración de referencia;SEVILLA;32.3;62.4;85.7;98.5;172.5;192.5;232.6;205.5;146.0;97.2;47.7;31.2;1404.1
+Evapotranspiración de referencia;SORIA;20.0;42.0;53.6;60.3;127.4;131.1;178.4;154.5;100.5;54.7;27.6;21.9;972.0
+Evapotranspiración de referencia;TARRAGONA;24.4;52.5;66.9;76.4;128.1;134.5;179.6;156.5;110.8;77.7;31.0;37.2;1075.6
+Evapotranspiración de referencia;TERUEL;24.8;50.8;55.5;71.4;131.6;144.1;185.5;166.9;107.6;68.3;30.6;30.3;1067.4
+Evapotranspiración de referencia;TOLEDO;24.5;44.8;71.3;80.7;156.9;198.8;240.8;198.7;133.6;77.9;33.4;29.3;1290.7
+Evapotranspiración de referencia;VALENCIA/VALÈNCIA;31.9;58.7;66.2;82.2;138.8;161.9;172.3;166.1;113.5;83.1;33.4;45.6;1153.7
+Evapotranspiración de referencia;VALLADOLID;16.4;38.1;61.5;64.9;130.5;147.8;206.1;163.7;113.1;59.6;28.3;21.1;1051.1
+Evapotranspiración de referencia;ZAMORA;16.9;37.4;61.2;63.2;133.6;144.4;199.2;152.2;106.9;55.3;23.8;20.7;1014.8
+Evapotranspiración de referencia;ZARAGOZA;21.8;51.1;65.2;80.1;144.0;150.6;202.0;182.4;122.3;71.7;31.9;31.4;1154.5
