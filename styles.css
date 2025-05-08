@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -34,7 +33,8 @@ main {
 
 /* Secciones informativas */
 #notifications-section,
-#recommendations-section {
+#recommendations-section,
+#live-sensor-data-section {
     background-color: #fff;
     padding: 20px;
     border: 1px solid #ccc;
@@ -45,6 +45,7 @@ main {
 h2 {
     margin-top: 0;
     font-size: 1.2rem;
+    color: #333;
 }
 
 /* Texto legible */
@@ -53,43 +54,6 @@ h2 {
     margin: 10px 0;
     font-size: 1rem;
 }
-
-/* Media Query para pantallas pequeñas */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-
-    .chart-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .chart-container canvas {
-        width: 100%;
-        max-width: 100%;
-    }
-}
-
-.logout-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    background: linear-gradient(to right, #ff416c, #ff4b2b);
-    border: none;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.logout-btn:hover {
-    background: linear-gradient(to right, #e60039, #c90027);
-}
-
-/* aemet Data -------------------------------------------------------------*/
 
 hr {
     border: 0;
@@ -138,25 +102,16 @@ hr {
     background-color: #0056b3;
 }
 
-#aemet-display-area { /* Add a height to the container of the canvas */
-    position: relative; /* Good for positioning chart elements if needed */
-    /* Option 1: Fixed height */
-    /* height: 400px; */ /* Example fixed height */
-
-    /* Option 2: Max height, allowing it to be smaller if content is less */
-    max-height: 450px; /* Adjust as needed */
-    /* You might need to give it some initial height or min-height if it collapses */
-    min-height: 200px; /* Example */
+#aemet-display-area {
+    position: relative; 
+    max-height: 450px; /* Constrains height, preventing "growing chart" */
+    min-height: 250px; /* Ensures some space even if chart is small */
 }
-
 
 #aemet-display-area canvas {
     max-width: 100%;
-    /* If parent has height, let canvas fill it, aspect-ratio will be ignored if maintainAspectRatio is false */
-    /* height: 100% !important; */ /* Force it if needed, but usually not ideal with maintainAspectRatio: false */
-    /* The aspect-ratio with height:auto for the canvas and a constrained parent should work */
     height: auto; 
-    aspect-ratio: 2 / 1; /* This is good, keep it */
+    aspect-ratio: 2 / 1; 
     margin-top: 15px;
 }
 
@@ -164,61 +119,7 @@ hr {
     font-style: italic;
     color: #555;
 }
-=======
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #ffffff;
-}
 
-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* Contenedor de gráficos flexible */
-.chart-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.chart-container canvas {
-    flex: 1 1 300px; /* Se adapta con mínimo de 300px */
-    max-width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 2; /* Relación de aspecto para mantener forma */
-}
-
-/* Secciones informativas */
-#notifications-section,
-#recommendations-section {
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Titulares accesibles */
-h2 {
-    margin-top: 0;
-    font-size: 1.2rem;
-}
-
-/* Texto legible */
-#notifications p,
-#recommendations p {
-    margin: 10px 0;
-    font-size: 1rem;
-}
 
 /* Media Query para pantallas pequeñas */
 @media (max-width: 600px) {
@@ -226,12 +127,12 @@ h2 {
         padding: 10px;
     }
 
-    .chart-container {
+    .chart-container, #aemet-controls {
         flex-direction: column;
         align-items: center;
     }
 
-    .chart-container canvas {
+    .chart-container canvas, #aemet-display-area canvas {
         width: 100%;
         max-width: 100%;
     }
@@ -254,5 +155,3 @@ h2 {
 .logout-btn:hover {
     background: linear-gradient(to right, #e60039, #c90027);
 }
-
->>>>>>> b8e3dad5880fb387dbefb20cda116cd64e989b79

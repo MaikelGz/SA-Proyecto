@@ -6,8 +6,6 @@
     <title>Monitorización de Salud de la Tierra</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- jQuery is not strictly needed for this version, but if you have other uses for it, keep it -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 </head>
 <body>
     <header>
@@ -34,18 +32,17 @@
         <section id="recommendations-section">
             <h2>Recomendaciones IA (Reglas Básicas)</h2>
             <div id="recommendations">
-                <p>Revisar la humedad si la temperatura sigue aumentando.</p>
+                <p>Revisar la humedad si la temperatura sigue aumentando.</p> <!-- Default Recommendation -->
             </div>
         </section>
 
-        <hr> <!-- Separator -->
+        <hr> 
 
         <section id="aemet-data-section">
             <h2>Datos Históricos AEMET</h2>
             <div id="aemet-controls">
-                <label for="aemet-region-select">Región/Provincia:</label>
-                <input type="text" id="aemet-region-input" placeholder="Ej: A CORUÑA"> 
-                <!-- Or a <select> if you populate it with known regions -->
+                <label for="aemet-region-input">Región/Provincia:</label>
+                <input type="text" id="aemet-region-input" placeholder="Ej: A CORUÑA, DUERO"> 
 
                 <label for="aemet-parameter-select">Parámetro:</label>
                 <select id="aemet-parameter-select">
@@ -77,9 +74,8 @@
                 <button id="fetch-aemet-data-btn">Cargar Datos AEMET</button>
             </div>
             <div id="aemet-display-area">
-                <p id="aemet-status-message">Seleccione región, parámetro y año para ver los datos.</p>
+                <p id="aemet-status-message">Introduzca región, seleccione parámetro y año para ver los datos.</p>
                 <canvas id="aemetChart" style="display: none;" aria-label="Gráfico de Datos AEMET" role="img"></canvas>
-                <!-- Or a table: <table id="aemet-table" style="display: none;"></table> -->
             </div>
         </section>
     </main>
