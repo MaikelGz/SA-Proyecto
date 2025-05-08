@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -87,3 +88,50 @@
     <script type="module" src="script.js"></script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitorización de Salud de la Tierra</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Gráfico Salud Tierra</h1>
+    </header>
+    
+    <button id="logout-btn" class="logout-btn">Cerrar sesión</button>
+
+    <main>
+        <section id="chart-section">
+            <div class="chart-container">
+                <canvas id="temperatureChart" aria-label="Gráfico de Temperatura" role="img"></canvas>
+                <canvas id="phChart" aria-label="Gráfico de pH" role="img"></canvas>
+                <canvas id="humidityChart" aria-label="Gráfico de Humedad" role="img"></canvas>
+            </div>
+        </section>
+
+        <section id="notifications-section">
+            <h2>Notificaciones</h2>
+            <div id="notifications"></div>
+        </section>
+
+        <section id="recommendations-section">
+            <h2>Recomendaciones</h2>
+            <div id="recommendations">
+                <p>Revisar la humedad si la temperatura sigue aumentando.</p>
+            </div>
+        </section>
+    </main>
+
+    
+    <!-- Tu script principal -->
+    <script type="module" src="script.js"></script>
+    
+</body>
+</html>
+>>>>>>> b8e3dad5880fb387dbefb20cda116cd64e989b79
