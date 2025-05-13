@@ -85,6 +85,40 @@
                 <!-- Or a table: <table id="aemet-table" style="display: none;"></table> -->
             </div>
         </section>
+
+        <hr> <!-- Separator -->
+
+        <section id="realtime-aemet-section">
+            <h2>Observación Actual AEMET (Simulada)</h2>
+            <div id="realtime-aemet-controls">
+                <!-- In index.html, inside #realtime-aemet-controls -->
+                <label for="realtime-province-select">Provincia:</label>
+                <!-- FROM: <input type="text" id="realtime-idema-input" placeholder="Ej: 2517A" value="2517A"> -->
+                <!-- TO: -->
+                <select id="realtime-province-select">
+                    <option value="">-- Seleccione Provincia --</option>
+                </select>
+                <button id="fetch-realtime-aemet-btn">Cargar Observación Actual</button>
+            </div>
+            <div id="realtime-aemet-display-area">
+                <p id="realtime-aemet-status-message">Introduzca un IDEMA y pulse cargar.</p>
+                <div id="realtime-data-values" style="display: none;">
+                    <p><strong>Estación:</strong> <span id="rt-station-name">-</span></p>
+                    <p><strong>Última Actualización:</strong> <span id="rt-timestamp">-</span></p>
+                    <p><strong>Temperatura:</strong> <span id="rt-temp">-</span> °C</p>
+                    <p><strong>Humedad Relativa:</strong> <span id="rt-humidity">-</span> %</p>
+                    <p><strong>Precipitación (última hora):</strong> <span id="rt-precip">-</span> mm</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+
+
+
     </main>
     
     <script type="module" src="script.js"></script>
