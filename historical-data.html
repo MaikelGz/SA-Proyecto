@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Históricos AEMET - Monitor de Suelo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1 id="historical-title">Datos Históricos AEMET para: <span id="selected-region-name-historical">-</span></h1>
+        <div>
+            <a href="index.html" class="nav-link">Seleccionar Otra Región</a>
+            <a id="back-to-dashboard-link" href="#" class="nav-link">Volver al Dashboard Principal</a>
+            <button id="logout-btn" class="logout-btn">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="historical-aemet-data-section">
+            <h2>Explorar Datos Históricos de AEMET</h2>
+            <div id="aemet-controls">
+                <label for="aemet-parameter-select">Parámetro:</label>
+                <select id="aemet-parameter-select">
+                    <option value="AD25mm_Provincias">Humedad Suelo AD25mm (Provincias)</option>
+                    <option value="AD75mm_Provincias">Humedad Suelo AD75mm (Provincias)</option>
+                    <option value="ADRmax_Provincias">Humedad Suelo ADRmax (Provincias)</option>
+                    <option value="ETo_Provincias">ETo (Provincias)</option>
+                    <option value="Precipitacion_Provincias">Precipitación (Provincias)</option>
+                    <option value="AD25mm_GrandesCuencas">Humedad Suelo AD25mm (GrandesCuencas)</option>
+                    <option value="AD75mm_GrandesCuencas">Humedad Suelo AD75mm (GrandesCuencas)</option>
+                    <option value="ADRmax_GrandesCuencas">Humedad Suelo ADRmax (GrandesCuencas)</option>
+                    <option value="ETo_GrandesCuencas">ETo (GrandesCuencas)</option>
+                    <option value="Precipitacion_GrandesCuencas">Precipitación (GrandesCuencas)</option>
+                    <option value="AD25mm_ComunidadesAutonomas">Humedad Suelo AD25mm (Com. Autónomas)</option>
+                    <option value="AD75mm_ComunidadesAutonomas">Humedad Suelo AD75mm (Com. Autónomas)</option>
+                    <option value="ADRmax_ComunidadesAutonomas">Humedad Suelo ADRmax (Com. Autónomas)</option>
+                    <option value="ETo_ComunidadesAutonomas">ETo (Com. Autónomas)</option>
+                    <option value="Precipitacion_ComunidadesAutonomas">Precipitación (Com. Autónomas)</option>
+                </select>
+
+                <label for="aemet-year-select">Año:</label>
+                <select id="aemet-year-select">
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                </select>
+                <button id="fetch-historical-aemet-btn">Cargar Datos Históricos</button>
+            </div>
+            <div id="aemet-display-area">
+                <p id="aemet-status-message">Seleccione parámetro y año para ver los datos.</p>
+                <canvas id="aemetChart" style="display: none;" aria-label="Gráfico de Datos AEMET Históricos" role="img"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Sensorización e Ambiente - Proyecto</p>
+    </footer>
+    <script type="module" src="js/historicalPage.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Región - Monitor de Suelo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+</head>
+<body>
+    <header>
+        <h1 id="dashboard-title">Dashboard: <span id="selected-region-name">-</span></h1>
+        <div>
+            <a href="index.html" class="nav-link">Cambiar Región</a>
+            <button id="logout-btn" class="logout-btn">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <main class="dashboard-main-content"> <!-- Added a class for potential layout adjustments -->
+        <div class="dashboard-primary-column"> <!-- Column for main data -->
+            <section id="current-status-summary">
+                <h2>Resumen del Estado Actual (<span class="dynamic-region-name">-</span>)</h2>
+                
+                <div class="status-grid">
+                    <div class="status-card" id="sensor-summary">
+                        <h3>Sensores (Simulados)</h3>
+                        <p>Temperatura ambiente: <span id="summary-temp">-</span> °C</p>
+                        <p>Humedad ambiente: <span id="summary-humidity">-</span> %</p>
+                        <p>pH del suelo: <span id="summary-ph">-</span></p>
+                        <button id="simulate-new-reading-btn">Simular Nueva Lectura</button>
+                    </div>
+
+                    <div class="status-card" id="realtime-aemet-summary">
+                        <h3>Observación AEMET Actual ( Real-time weather simulation)</h3>
+                        <p id="realtime-aemet-status-message">Cargando datos...</p> 
+                        
+                        <div id="realtime-data-values" style="display: none;"> 
+                            <p><strong>Estación:</strong> <span id="rt-station-name">-</span></p>
+                            <p><strong>Actualizado:</strong> <span id="rt-timestamp">-</span></p>
+                            <p><strong>Temp. ambiente:</strong> <span id="rt-temp">-</span> °C</p>
+                            <p><strong>Humedad ambiente:</strong> <span id="rt-humidity">-</span> %</p>
+                            <p><strong>Precipitación (1h):</strong> <span id="rt-precip">-</span> mm</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="recommendations-section">
+                <h2>Recomendaciones IA</h2>
+                <div id="recommendations">
+                    <p>Cargando recomendaciones...</p>
+                </div>
+            </section>
+
+            <section id="historical-data-link-section">
+                <h2>Análisis Histórico</h2>
+                <p>Para un análisis detallado de los datos históricos de AEMET y gráficos, visite la página de datos históricos.</p>
+                <button id="view-historical-data-btn">Ver Datos Históricos Detallados</button>
+            </section>
+        </div>
+
+        <aside class="dashboard-secondary-column"> <!-- Column for Chatbot -->
+            <section id="ai-chatbot-section">
+                <h2>Asistente IA</h2>
+                <div id="chatbot-window">
+                    <div id="chatbot-messages">
+                        <div class="message bot-message">
+                            <p>Hola! Soy tu asistente IA. ¿Cómo puedo ayudarte hoy con la gestión de tu suelo?</p>
+                        </div>
+                        <!-- User messages and further bot messages will appear here -->
+                    </div>
+                    <div id="chatbot-input-area">
+                        <input type="text" id="chatbot-input" placeholder="Escribe tu pregunta aquí...">
+                        <button id="chatbot-send-btn">Enviar</button>
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+    </main>
+
+    <footer>
+        <p>© 2024 Sensorización e Ambiente - Proyecto</p>
+    </footer>
+    <script type="module" src="js/dashboardPage.js"></script>
+</body>
+</html>

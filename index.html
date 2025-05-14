@@ -3,124 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitorización de Salud de la Tierra</title>
+    <title>Selección de Región - Monitor de Suelo</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- jQuery is not strictly needed for this version, but if you have other uses for it, keep it -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 </head>
 <body>
     <header>
-        <h1 id="main-title">Gráfico Salud Tierra</h1>
+        <h1 id="main-title">Monitorización de Salud del Suelo</h1>
+        <button id="logout-btn" class="logout-btn">Cerrar Sesión</button>
     </header>
-    
-    <button id="logout-btn" class="logout-btn">Cerrar sesión</button>
 
     <main>
-        <section id="live-sensor-data-section">
-            <h2>Datos de Sensores en Tiempo Real (Simulados)</h2>
-            <div class="chart-container">
-                <canvas id="temperatureChart" aria-label="Gráfico de Temperatura" role="img"></canvas>
-                <canvas id="phChart" aria-label="Gráfico de pH" role="img"></canvas>
-                <canvas id="humidityChart" aria-label="Gráfico de Humedad" role="img"></canvas>
+        <section id="region-selection-section">
+            <h2>Seleccione su Región de Interés</h2>
+            <p>Elija la provincia o región que desea monitorizar para ver estadísticas y recomendaciones.</p>
+            
+            <div class="form-group">
+                <label for="user-region-select">Región/Provincia Registrada:</label>
+                <input type="text" id="user-registered-location" readonly disabled> 
+                <!-- This will be populated with the user's registered location -->
             </div>
-        </section>
 
-        <section id="notifications-section">
-            <h2>Notificaciones y Promedios Recientes</h2>
-            <div id="notifications"></div>
-        </section>
-
-        <section id="recommendations-section">
-            <h2>Recomendaciones IA (Reglas Básicas)</h2>
-            <div id="recommendations">
-                <p>Revisar la humedad si la temperatura sigue aumentando.</p>
-            </div>
-        </section>
-
-        <hr> <!-- Separator -->
-
-        <section id="aemet-data-section">
-            <h2>Datos Históricos AEMET</h2>
-            <div id="aemet-controls">
-                <label for="aemet-region-select">Región/Provincia:</label>
-                <!-- FROM: <input type="text" id="aemet-region-input" placeholder="Ej: A CORUÑA"> -->
-                <!-- TO: -->
-                <select id="aemet-region-select">
-                    <option value="">-- Seleccione una Región --</option>
+            <div class="form-group">
+                <label for="monitoring-region-select">Seleccionar Región para Monitorizar:</label>
+                <select id="monitoring-region-select">
+                    <option value="">-- Cargando regiones... --</option>
+                    <!-- Options will be populated by JavaScript from Firestore -->
+                    <!-- Example: <option value="ARABA_ALAVA">ARABA/ALAVA</option> -->
                 </select>
-
-                <label for="aemet-parameter-select">Parámetro:</label>
-                <select id="aemet-parameter-select">
-                    <option value="AD25mm_Provincias">Humedad Suelo AD25mm (Provincias)</option>
-                    <option value="AD75mm_Provincias">Humedad Suelo AD75mm (Provincias)</option>
-                    <option value="ADRmax_Provincias">Humedad Suelo ADRmax (Provincias)</option>
-                    <option value="ETo_Provincias">ETo (Provincias)</option>
-                    <option value="Precipitacion_Provincias">Precipitación (Provincias)</option>
-                    <option value="AD25mm_GrandesCuencas">Humedad Suelo AD25mm (GrandesCuencas)</option>
-                    <option value="AD75mm_GrandesCuencas">Humedad Suelo AD75mm (GrandesCuencas)</option>
-                    <option value="ADRmax_GrandesCuencas">Humedad Suelo ADRmax (GrandesCuencas)</option>
-                    <option value="ETo_GrandesCuencas">ETo (GrandesCuencas)</option>
-                    <option value="Precipitacion_GrandesCuencas">Precipitación (GrandesCuencas)</option>
-                    <option value="AD25mm_ComunidadesAutonomas">Humedad Suelo AD25mm (Com. Autónomas)</option>
-                    <option value="AD75mm_ComunidadesAutonomas">Humedad Suelo AD75mm (Com. Autónomas)</option>
-                    <option value="ADRmax_ComunidadesAutonomas">Humedad Suelo ADRmax (Com. Autónomas)</option>
-                    <option value="ETo_ComunidadesAutonomas">ETo (Com. Autónomas)</option>
-                    <option value="Precipitacion_ComunidadesAutonomas">Precipitación (Com. Autónomas)</option>
-                </select>
-
-                <label for="aemet-year-select">Año:</label>
-                <select id="aemet-year-select">
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                </select>
-                <button id="fetch-aemet-data-btn">Cargar Datos AEMET</button>
             </div>
-            <div id="aemet-display-area">
-                <p id="aemet-status-message">Seleccione región, parámetro y año para ver los datos.</p>
-                <canvas id="aemetChart" style="display: none;" aria-label="Gráfico de Datos AEMET" role="img"></canvas>
-                <!-- Or a table: <table id="aemet-table" style="display: none;"></table> -->
-            </div>
-        </section>
-
-        <hr> <!-- Separator -->
-
-        <section id="realtime-aemet-section">
-            <h2>Observación Actual AEMET (Simulada)</h2>
-            <div id="realtime-aemet-controls">
-                <!-- In index.html, inside #realtime-aemet-controls -->
-                <label for="realtime-province-select">Provincia:</label>
-                <!-- FROM: <input type="text" id="realtime-idema-input" placeholder="Ej: 2517A" value="2517A"> -->
-                <!-- TO: -->
-                <select id="realtime-province-select">
-                    <option value="">-- Seleccione Provincia --</option>
-                </select>
-                <button id="fetch-realtime-aemet-btn">Cargar Observación Actual</button>
-            </div>
-            <div id="realtime-aemet-display-area">
-                <p id="realtime-aemet-status-message">Introduzca un IDEMA y pulse cargar.</p>
-                <div id="realtime-data-values" style="display: none;">
-                    <p><strong>Estación:</strong> <span id="rt-station-name">-</span></p>
-                    <p><strong>Última Actualización:</strong> <span id="rt-timestamp">-</span></p>
-                    <p><strong>Temperatura:</strong> <span id="rt-temp">-</span> °C</p>
-                    <p><strong>Humedad Relativa:</strong> <span id="rt-humidity">-</span> %</p>
-                    <p><strong>Precipitación (última hora):</strong> <span id="rt-precip">-</span> mm</p>
-                </div>
-            </div>
+            <button id="view-region-dashboard-btn" disabled>Ver Dashboard de Región</button>
+            <p id="selection-status" class="status-message"></p>
         </section>
     </main>
-    
-    <script type="module" src="script.js"></script>
-</body>
-</html>
 
+    <footer>
+        <p>© 2024 Sensorización e Ambiente - Proyecto</p>
+    </footer>
 
-
-    </main>
-    
-    <script type="module" src="script.js"></script>
+    <script type="module" src="js/mainPage.js"></script> 
 </body>
 </html>
