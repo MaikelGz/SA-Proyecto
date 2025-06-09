@@ -1,0 +1,620 @@
+/* styles.css - Global and Page-Specific Styles */
+
+/* === Global Reset & Base Styles === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7f6; /* Light grey background for the body */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 16px;
+}
+
+/* === Header & Footer === */
+header {
+    background-color: #2c3e50; /* Dark blue-grey */
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+footer {
+    background-color: #34495e; /* Slightly lighter dark blue-grey */
+    color: #ecf0f1; /* Light grey text */
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+/* === Main Content Area === */
+main {
+    flex-grow: 1;
+    width: 90%;
+    max-width: 1200px; /* Max width for content */
+    margin: 20px auto; /* Top/bottom margin, centered horizontally */
+    padding: 20px;
+    background-color: #ffffff; /* White background for main content area */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.07);
+}
+
+/* === Headings and Text === */
+h2 {
+    color: #2c3e50;
+    margin-top: 0; /* Reset for section headings */
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #3498db; /* Blue accent */
+    padding-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #444;
+}
+
+/* === Buttons & Links === */
+.logout-btn {
+    padding: 0.6rem 1rem;
+    background: #e74c3c; /* Red */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+    font-size: 0.9rem;
+}
+
+.logout-btn:hover {
+    background: #c0392b; /* Darker red */
+}
+
+.nav-link { /* For navigation links like "Cambiar Región" */
+    color: white;
+    background-color: #3498db; /* Blue */
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.2s ease-in-out;
+    font-size: 0.9rem;
+}
+
+.nav-link:hover {
+    background-color: #2980b9; /* Darker blue */
+}
+
+button { /* General button styling, can be overridden */
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* === Forms & Inputs (General) === */
+select,
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+select {
+    appearance: none; /* For custom arrow later if desired */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right .7em top 50%;
+    background-size: .65em auto;
+    padding-right: 2.5em; /* Make space for arrow */
+}
+
+
+input[type="text"]:read-only {
+    background-color: #e9ecef; /* Disabled look */
+    cursor: not-allowed;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* === Utility Classes === */
+.status-message {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #7f8c8d; /* Grey */
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.15), rgba(0,0,0,0));
+    margin: 2.5rem 0;
+}
+
+/* === Chart Containers === */
+.chart-container { /* For live sensor charts on dashboardPage, if you decide to add them back */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    gap: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.chart-container canvas,
+#aemetChart { /* Historical AEMET Chart specific styling (on historical-data.html) */
+    flex: 1 1 300px; 
+    max-width: 100%; 
+    min-width: 280px; 
+    height: auto;    
+    aspect-ratio: 16 / 10; 
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+/* === Specific Page Styles === */
+
+/* --- auth.html --- */
+body.auth-page { 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea, #764ba2); 
+    padding: 20px; 
+}
+
+.form-container { 
+    background-color: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+.form-container h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1.8rem;
+    border-bottom: none; 
+}
+
+.form-container input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem; 
+    border: 1px solid #ddd; 
+    border-bottom-width: 2px;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-container input:focus {
+    border-bottom-color: #667eea; 
+}
+
+.form-container button {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    color: white;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    border-radius: 25px; 
+}
+
+.form-container button:hover {
+    background: linear-gradient(to right, #5a6fcf, #673e92);
+}
+
+.toggle-link { 
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.toggle-link a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.toggle-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- index.html (New Main Page / Region Selector) --- */
+#region-selection-section {
+    text-align: center;
+    padding: 2rem;
+}
+#region-selection-section .form-group {
+    max-width: 500px; 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+#view-region-dashboard-btn {
+    background-color: #27ae60; /* Green */
+    color: white;
+    font-size: 1.1rem;
+}
+#view-region-dashboard-btn:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+#view-region-dashboard-btn:hover:not(:disabled) {
+    background-color: #229954;
+}
+
+/* --- region-dashboard.html --- */
+#dashboard-title { 
+    text-align: center; 
+    flex-grow: 1; 
+}
+#dashboard-title #selected-region-name {
+    color: #3498db; 
+    font-weight: 700;
+}
+.dynamic-region-name { 
+    font-weight: bold;
+    color: #2980b9;
+}
+
+/* Styles for simplified region-dashboard.html current status section */
+#current-status-summary h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+    color: #34495e;
+}
+
+.status-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.status-card {
+    flex: 1;
+    min-width: 280px; 
+    background-color: #ecf0f1; 
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #dde;
+}
+
+.status-card p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+.status-card p span {
+    font-weight: 600;
+    color: #2980b9;
+}
+
+#sensor-summary button { 
+    margin-top: 10px;
+    background-color: #f39c12;
+    color: white;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+}
+#sensor-summary button:hover {
+    background-color: #e67e22;
+}
+
+#historical-data-link-section {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+#view-historical-data-btn {
+    background-color: #3498db; /* Blue */
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+#view-historical-data-btn:hover {
+    background-color: #2980b9;
+}
+
+
+/* Sections on Dashboard (shared with original index, now on dashboard) */
+#notifications-section, /* Kept for dashboard */
+#recommendations-section { /* Kept for dashboard */
+    background-color: #fff; 
+    padding: 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 1.5rem; 
+}
+
+/* --- historical-data.html --- */
+#historical-title #selected-region-name-historical {
+    color: #3498db;
+    font-weight: 700;
+}
+
+#historical-aemet-data-section { /* For historical page */
+    background-color: #fdfefe;
+    padding: 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+/* AEMET Controls (for historical page, similar to old AEMET section) */
+#aemet-controls { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+#aemet-controls label {
+    margin-bottom: 0; 
+}
+#aemet-controls select, #aemet-controls button {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+}
+
+#fetch-historical-aemet-btn { 
+    background-color: #007bff;
+}
+#fetch-historical-aemet-btn:hover {
+    background-color: #0056b3;
+}
+
+/* AEMET Display Area (for historical chart on historical-data.html) */
+#aemet-display-area { /* Also used on historical page */
+    position: relative;
+    max-height: 450px;
+    min-height: 200px;
+}
+#aemet-status-message { /* For historical page */
+    font-style: italic;
+    color: #555;
+}
+
+
+/* Real-time data values display (on region-dashboard.html) */
+#realtime-data-values p {
+    margin: 0.4rem 0;
+    font-size: 1rem;
+}
+#realtime-data-values span {
+    font-weight: 500; 
+    color: #2c3e50;
+}
+
+/* Specific overrides for sections if needed */
+#recommendations-section p,
+#notifications-section p {
+    margin-bottom: 0.5rem; 
+    font-size: 0.95rem;
+}
+#recommendations-section p:last-child,
+#notifications-section p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center; /* Center header content on small screens */
+    }
+    header h1 {
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+    }
+    header div { /* For nav links and logout on dashboard/historical header */
+        margin-top: 0.5rem;
+        display: flex; /* Allow nav links to wrap if needed */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    main {
+        width: 95%;
+        padding: 15px;
+        margin-top: 15px;
+    }
+    .chart-container { /* If used on dashboard */
+        flex-direction: column;
+        align-items: center;
+    }
+    .chart-container canvas, #aemetChart {
+        flex-basis: auto; 
+        aspect-ratio: 4 / 3; 
+    }
+    #aemet-controls, #realtime-aemet-controls { /* These don't exist on region-dashboard anymore */
+        flex-direction: column;
+        align-items: stretch; 
+    }
+    .status-grid { /* For dashboard */
+        flex-direction: column;
+    }
+}
+
+/* styles.css - Add these new styles or modify existing */
+
+/* ... (all your existing styles from before) ... */
+
+/* === Layout for region-dashboard.html (Main Content and Chatbot) === */
+main.dashboard-main-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow chatbot to wrap below on smaller screens */
+    gap: 20px; /* Space between main content and chatbot */
+}
+
+.dashboard-primary-column {
+    flex: 3; /* Takes up more space */
+    min-width: 300px; /* Minimum width before wrapping */
+}
+
+.dashboard-secondary-column { /* For the chatbot */
+    flex: 1;
+    min-width: 280px; /* Minimum width for the chatbot */
+    /* background-color: #f0f4f8; */ /* Slightly different background if desired */
+    /* padding: 15px; */
+    /* border-radius: 8px; */
+}
+
+
+/* === AI Chatbot Section Styles === */
+#ai-chatbot-section {
+    background-color: #eaf2f8; /* Lightest blue */
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #d6eaf8;
+    height: 100%; /* Try to make it fill the secondary column height */
+    display: flex;
+    flex-direction: column;
+}
+
+#ai-chatbot-section h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #1a5276; /* Darker blue for chatbot title */
+    border-bottom-color: #5dade2; /* Lighter blue accent */
+}
+
+#chatbot-window {
+    flex-grow: 1; /* Allow window to fill available space in the section */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #aed6f1;
+    border-radius: 6px;
+    background-color: #ffffff;
+    overflow: hidden; /* Important for containing messages */
+    max-height: 500px; /* Or a vh unit, e.g., 60vh */
+}
+
+#chatbot-messages {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto; /* Scroll for messages */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background-color: #d1e9ff; /* Light blue for bot */
+    color: #004085;
+    border-bottom-left-radius: 2px; /* Bubble tail effect */
+    align-self: flex-start;
+    margin-right: auto; /* Push to left */
+}
+
+.user-message { /* Style for user messages (you'll add these via JS) */
+    background-color: #e2ffe8; /* Light green for user */
+    color: #155724;
+    border-bottom-right-radius: 2px; /* Bubble tail effect */
+    align-self: flex-end;
+    margin-left: auto; /* Push to right */
+}
+
+#chatbot-input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #aed6f1;
+    background-color: #f8f9fa;
+}
+
+#chatbot-input {
+    flex-grow: 1;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 20px 0 0 20px; /* Rounded on left */
+    outline: none;
+    font-size: 0.95rem;
+    margin-right: 0; /* Remove default margin */
+}
+
+#chatbot-send-btn {
+    padding: 0.6rem 1rem;
+    background-color: #2980b9; /* Blue */
+    color: white;
+    border: none;
+    border-radius: 0 20px 20px 0; /* Rounded on right */
+    cursor: pointer;
+    font-size: 0.95rem;
+    margin-left: -1px; /* Overlap border slightly */
+}
+
+#chatbot-send-btn:hover {
+    background-color: #1f618d;
+}
+
+/* Responsive adjustments for dashboard columns */
+@media (max-width: 992px) { /* Adjust breakpoint as needed */
+    main.dashboard-main-content {
+        flex-direction: column; /* Stack columns */
+    }
+    .dashboard-primary-column,
+    .dashboard-secondary-column {
+        flex-basis: auto; /* Reset flex-basis */
+        width: 100%;      /* Take full width when stacked */
+    }
+    #chatbot-window {
+        max-height: 400px; /* Adjust height for stacked view */
+    }
+}

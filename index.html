@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selección de Región - Monitor de Suelo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 id="main-title">Monitorización de Salud del Suelo</h1>
+        <button id="logout-btn" class="logout-btn">Cerrar Sesión</button>
+    </header>
+
+    <main>
+        <section id="region-selection-section">
+            <h2>Seleccione su Región de Interés</h2>
+            <p>Elija la provincia o región que desea monitorizar para ver estadísticas y recomendaciones.</p>
+            
+            <div class="form-group">
+                <label for="user-region-select">Región/Provincia Registrada:</label>
+                <input type="text" id="user-registered-location" readonly disabled> 
+                <!-- This will be populated with the user's registered location -->
+            </div>
+
+            <div class="form-group">
+                <label for="monitoring-region-select">Seleccionar Región para Monitorizar:</label>
+                <select id="monitoring-region-select">
+                    <option value="">-- Cargando regiones... --</option>
+                    <!-- Options will be populated by JavaScript from Firestore -->
+                    <!-- Example: <option value="ARABA_ALAVA">ARABA/ALAVA</option> -->
+                </select>
+            </div>
+            <button id="view-region-dashboard-btn" disabled>Ver Dashboard de Región</button>
+            <p id="selection-status" class="status-message"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Sensorización e Ambiente - Proyecto</p>
+    </footer>
+
+    <script type="module" src="js/mainPage.js"></script> 
+</body>
+</html>

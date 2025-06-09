@@ -1,0 +1,3 @@
+python -m llama_cpp.server --model models/mistral-7b/mistral-7b.Q4_K_M.gguf
+
+python .\IA\api_assistant.py
