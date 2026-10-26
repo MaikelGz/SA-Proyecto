@@ -261,10 +261,6 @@ La configuración detallada, la explicación del conocimiento documental, el con
 - El navegador llama al chat por HTTP en `localhost`; para una instalación remota deberá configurar una URL accesible y HTTPS, además de ajustar CORS.
 
 ## Limitaciones conocidas
-
-- La observación que muestra el dashboard está simulada en `js/dashboardPage.js`; no es una consulta en vivo a AEMET.
-- La lectura manual simulada del dashboard no se almacena en Firestore.
-- `simulateSensor.py` guarda `timestamp`, mientras el dashboard ordena por `sensor_timestamp`; alinear el campo temporal para que esas muestras alimenten el resumen.
 - `upload_all_aemet_data.py` construye el segmento del parámetro con `Provincia` (singular), pero las opciones de la página histórica utilizan `Provincias` (plural). En consecuencia, los históricos provinciales importados con el nombre actual no se localizarán desde ese selector hasta normalizar el nombre en uno de los dos lados.
 - La consulta de sensor del dashboard es global y no filtra por región.
 - El contexto histórico de las recomendaciones usa de forma fija `AD25mm_Provincias` y el año 2020.
