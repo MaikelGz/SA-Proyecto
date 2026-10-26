@@ -2,8 +2,6 @@
 
 Aplicación web para consultar datos ambientales por región, visualizar series históricas de AEMET y obtener recomendaciones agrícolas a partir de lecturas de sensores. El repositorio combina una interfaz web estática, Firebase (Authentication y Cloud Firestore), scripts de ingesta en Python y un servicio HTTP opcional para un asistente basado en un modelo local.
 
-> **Estado funcional:** algunas funciones de la interfaz usan datos simulados. En particular, la observación AEMET mostrada en el dashboard se genera en el navegador; la simulación de lectura de sensor tampoco persiste la lectura. Los scripts Python de ingesta son procesos separados y deben ejecutarse expresamente.
-
 ## Contenido
 
 - [Capacidades](#capacidades)
